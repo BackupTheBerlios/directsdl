@@ -49,8 +49,8 @@ int MessageBox(int a, char *dialog_text, char *dialog_title, int b)
     /* wets the border width of the window */
     gtk_container_set_border_width (GTK_CONTAINER (window), 10);
     
-    /* create a 2x3 table */
-    table = gtk_table_new (2, 3, TRUE);
+    /* create a 2x1 table */
+    table = gtk_table_new (2, 1, TRUE);
 
     /* add the box to the gtk container */
     gtk_container_add (GTK_CONTAINER (window), table);
@@ -58,8 +58,8 @@ int MessageBox(int a, char *dialog_text, char *dialog_title, int b)
     /* create a text label */
     text = gtk_label_new (dialog_text);
     
-    /* add the label to the table on row 0-1 and colum 0-3*/
-    gtk_table_attach_defaults (GTK_TABLE (table), text, 0, 3, 0, 1);
+    /* add the label to the table on row 0-1 and colum 0-1 */
+    gtk_table_attach_defaults (GTK_TABLE (table), text, 0, 1, 0, 1);
     
     /* create a ok button */
     ok_button = gtk_button_new_with_label ("OK");
@@ -73,8 +73,8 @@ int MessageBox(int a, char *dialog_text, char *dialog_title, int b)
     g_signal_connect (G_OBJECT (window), "destroy",
 			      G_CALLBACK (gtk_main_quit), NULL);
     
-    /* add the button to the table on row 1-2 and colum 1-2 */
-    gtk_table_attach_defaults (GTK_TABLE (table), ok_button, 1, 2, 1, 2);
+    /* add the button to the table on row 1-2 and colum 0-1 */
+    gtk_table_attach_defaults (GTK_TABLE (table), ok_button, 0, 1, 1, 2);
     
     /* display the invisible box ;) */
     gtk_widget_show (table);

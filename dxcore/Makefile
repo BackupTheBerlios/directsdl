@@ -2,7 +2,7 @@
 # (C)2004 Sebastian Steinhauer
 
 # the GNU C++ compiler
-CXX = g++ `sdl-config --cflags` -O3
+CXX = g++ `sdl-config --cflags` -O3 -I/usr/local/include/DirectSDL/
 
 # needed libs
 LIBS = `sdl-config --libs`

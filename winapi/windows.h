@@ -70,11 +70,19 @@ typedef int PAINTSTRUCT;
 #define APIENTRY
 #define HBRUSH int
 
-#define true -1
-#define TRUE true
-#define false 0
-#define FALSE false
-
+#ifndef true
+	#define true -1
+#endif
+#ifndef TRUE
+	#define TRUE true
+#endif
+#ifndef false
+	#define false 0
+#endif
+#ifndef FALSE
+	#define FALSE false
+#endif
+	
 enum {
 	CS_HREDRAW, CS_VREDRAW, IDI_APPLICATION, IDC_ARROW, COLOR_BACKGROUND, WS_OVERLAPPED, 
 	CW_USEDEFAULT, SW_SHOW, MB_OK

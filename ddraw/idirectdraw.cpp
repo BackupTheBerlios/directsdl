@@ -116,7 +116,13 @@ int IDirectDraw7::SetDisplayMode(DWORD dwWidth, DWORD dwHeight, DWORD dwBPP)
 and the hardware emulation layer (HEL). */
 int IDirectDraw7::GetCaps(LPDDCAPS lpDDDriverCaps, LPDDCAPS lpDDHELCaps)
 {
-	/* only a dummy function...type working code later */
+	/*	well I fill the structure with some values...hopefully something useful */
+	lpDDriverCaps->dwCaps = DDCAPS_BLT | DDCAPS_BLTQUEUE | DDCAPS_CANCLIP
+		| DDCAPS_COLORKEY | DDCAPS_NOHARDWARE |DDCAPS_READSCANLINE;
+	
+	lpDDriverCaps->dwCaps2 = DDCAPS2_CANRENDERWINDOWED;
+	
+	
 	return DD_OK;
 };
 

@@ -13,6 +13,8 @@
 #include"ddraw.h"
 BOOL WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
+        MessageBox(0,"Yes, you can see a messagebox :)", "test", 1);
+	
 	HRESULT ddrval;
 	LPDIRECTDRAW lpDD;
 	
@@ -93,6 +95,6 @@ BOOL WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int 
 	lpDDSPrimary->Release();
 	lpDD->Release();
 	printf("\nWe reached the end without any segfaults...cool *fg\n");
-	
+
 	return true;
 };

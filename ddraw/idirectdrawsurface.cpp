@@ -1,5 +1,5 @@
 /*
- 	OpenDX - A wrapper, which provides DirectX functionality on top of the SDL library
+    OpenDX - A wrapper, which provides DirectX functionality on top of the SDL library
     Copyright (C) 2004	Sebastian Steinhauer <steini@steini-welt.de>
 						
 						

@@ -3,5 +3,6 @@ LIBS = `libds-config --libs`
 OBJS = msdn_test.o
 
 default: $(OBJS)
-	$(CXX) $(OBJS) $(LIBS) -o msdn_test -Wl,-static
-	
+	$(CXX) $(OBJS) $(LIBS) -o msdn_test
+clean:
+	rm -f msdn_test

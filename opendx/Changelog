@@ -2,3 +2,8 @@
 20040510 - Rene Roessler - 'renamed fake_x.h to sdldx.h'
 20040510 - Rene Roessler - 'Added the notimplemented function. You can now add notimplemented defines in "notimplemented.h".'
 20040510 - Rene Roessler - 'damn the name is opendx not sdldx ;)'
+20040512 - Rene Roessler - 'added a define for VOID in windows.h'
+20040512 - Rene Roessler - 'i tried some new tutorials, but it seams we need to begin with easy tutorials first ;)'
+20040512 - Rene Roessler - 'added some functions to notimplemented.h for testing some new(other) tutorials - we don't need to delete them out of notimplement.h, because they are not ... implemented :P'
+20040607 - Rene Roessler - 'added "header2dummy.pl" for converting the directx header files into dummy functions. But yet only functions, classes will follow..'
+20040608 - Rene Roessler - 'add class detection to "header2dummy.pl". Now i just need the directx headers and we can let it rock ;)'

@@ -29,6 +29,8 @@
 class IUnknown
 {
 	public:
+		IUnknown(void);
+		~IUnknown(void);
 		int Release(void);
 		int QueryInterface(LPVOID interface, LPVOID *object);
 		int AddRef(void);

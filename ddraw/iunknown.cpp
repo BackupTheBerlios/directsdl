@@ -27,6 +27,9 @@
 /*	functions for the IUnknown interface from DirectDraw 7 */
 #include "ddraw.h"
 
+IUnknown::IUnknown(void){};
+IUnknown::~IUnknown(void){};
+
 /* unknown function. MSDN said for debugging puposes only...seems not to be
 very important */
 int IUnknown::AddRef(void)
@@ -49,10 +52,13 @@ int IUnknown::QueryInterface(LPVOID interface, LPVOID *object)
 	return DD_OK;
 };
 
-/*	frees the IUnknown interface we haven't created anything dynamic
-	so there's nothing to clean up	
-*/
+/*	IUnknown::Release - apollo11's statement for delete this;
+	<apollo11> steini: es geht schon
+	<apollo11> nur
+	<apollo11> ich würde es nicht machen
+	<apollo11> ich halt's für schlechtes konzept */
 int IUnknown::Release(void)
 {
+	delete this;
 	return DD_OK;
 };

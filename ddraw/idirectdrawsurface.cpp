@@ -28,8 +28,8 @@
 */
 #include "ddraw.h"
 
-/*	create a IDirectDrawSurface7 */
-IDirectDrawSurface7::IDirectDrawSurface7(LPDDSURFACEDESC2 lpDDSurfaceDesc2, DWORD dwCaps)
+/*	creates the SDL_Surface for IDirectDrawSurface7 */
+void IDirectDrawSurface7::createsurface(int width, int height)
 {
 	Uint32 rmask,gmask,bmask,amask;
 	/* SDL interprets each pixel as a 32-bit number, so our masks must depend
@@ -46,16 +46,23 @@ IDirectDrawSurface7::IDirectDrawSurface7(LPDDSURFACEDESC2 lpDDSurfaceDesc2, DWOR
     	amask = 0xff000000;
 	#endif
     
+    surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 
+				32, rmask, gmask, bmask, amask);
+};
+
+/*	create a IDirectDrawSurface7 */
+IDirectDrawSurface7::IDirectDrawSurface7(LPDDSURFACEDESC2 lpDDSurfaceDesc2, DWORD dwCaps)
+{
+	
 	/* if the user requested a primary surface we don't need to create one, we just point to the screen */
 	if(dwCaps & DDSCAPS_PRIMARYSURFACE){
 		// point to the screen...
 		surface = screen;
-		return;
+	} else {
+		// create a new surface...
+		createsurface(lpDDSurfaceDesc2->dwWith, lpDDSurfaceDesc2->dwHeight);
 	};
-		
-	surface = SDL_CreateRGBSurface(SDL_SWSURFACE, lpDDSurfaceDesc2->dwWidth, lpDDSurfaceDesc2->dwHeight, 
-				32, rmask, gmask, bmask, amask);
-	
+			
 	this->locked_surface = NULL;
 };
 
@@ -63,6 +70,13 @@ IDirectDrawSurface7::~IDirectDrawSurface7(void)
 {
 	// perhaps the surface was forgotten to delete...
 	if(surface!=screen) SDL_FreeSurface(surface);
+};
+
+/*	the more simple constructor...used internally */
+IDirectDrawSurface7::IDirectDrawSurface7(int width, int height)
+{
+	createsurface(width,height);
+	this->locked_surface = NULL;	
 };
 
 /*	frees a DirectDrawSurface7
@@ -207,4 +221,31 @@ int IDirectDrawSurface7::Unlock(LPRECT lpRect)
 	locked_surface = NULL;
 	/* quit positive */
 	return DD_OK;
+};
+
+/*	The IDirectDrawSurface7::GetAttachedSurface method obtains the attached surface that has the
+	specified capabilities and increments the reference count of the retrieved interface. */
+int IDirectDrawSurface7::GetAttachedSurface(LPDDSCAPS2 lpDDSCaps, LPDIRECTDRAWSURFACE7 FAR *lplpDDAttachedSurface)
+{
+	LPDIRECTDRAWSURFACE7 lpDDS7;
+
+	// create a new surface with same size...
+	lpDDS7 = new IDirectDrawSurface7((int)screen->w,(int)screen->h);
+	// store pointer
+	*lplpDDAttachedSurface = lpDDS7;
+	
+	// MISSING!! Need to store values in the DDSCAPS2 structure!!!
+	
+	// return OK
+	return DD_OK;
+};
+
+/*	The IDirectDrawSurface7::Flip method makes the surface memory associated with the DDSCAPS_BACKBUFFER 
+	surface become associated with the front-buffer surface. */
+int Flip(LPDIRECTDRAWSURFACE7 lpDDSurfaceTargetOverride, DWORD dwFlags)
+{
+	// temporary SDL surface...only to store the pointer
+	SDL_Surface *tmp;
+	
+	// is 
 };

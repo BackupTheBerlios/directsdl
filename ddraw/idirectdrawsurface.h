@@ -31,6 +31,7 @@ class IDirectDrawSurface7 : public IUnknown
 {
 	public:
 		IDirectDrawSurface7(LPDDSURFACEDESC2 lpDDSurfaceDesc2, DWORD dwCaps);
+		IDirectDrawSurface7(int width, int height);
 		~IDirectDrawSurface7(void);
 		int Release(void);
 		int IsLost(void);
@@ -40,7 +41,9 @@ class IDirectDrawSurface7 : public IUnknown
   			LPDDBLTFX lpDDBltFx);
   		int Lock(LPRECT lpDestRect, LPDDSURFACEDESC2 lpDDSurfaceDesc, DWORD dwFlags, HANDLE hEvent);
   		int Unlock(LPRECT lpRect);
+  		int GetAttachedSurface(LPDDSCAPS2 lpDDSCaps, LPDIRECTDRAWSURFACE7 FAR *lplpDDAttachedSurface);
 		SDL_Surface	*surface;
 	private:
+		void createsurface(int width, int height);
 		SDL_Surface *locked_surface;
 };

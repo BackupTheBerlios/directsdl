@@ -44,6 +44,9 @@ extern int WinMain(HINSTANCE, HINSTANCE, LPSTR, int);
 standard WinMain() function of a normal Windows application */
 int main(int argc, char *argv[])
 {
+        /* initialize gtk */
+        gtk_init (&argc, &argv);
+	
 	/* try to initialize SDL */
 	if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER)==-1){
 		fprintf(stderr,"Can't initialize SDL: %s\n",SDL_GetError());

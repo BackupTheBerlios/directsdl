@@ -2,10 +2,10 @@
 # (C)2004 Sebastian Steinhauer
 
 # the GNU C++ compiler
-CXX = g++ `sdl-config --cflags` -O3 -I/usr/local/include/DirectSDL/
+CXX = g++ `sdl-config --cflags` `pkg-config --cflags gtk+-2.0` -O3 -I/usr/local/include/DirectSDL/
 
 # needed libs
-LIBS = `sdl-config --libs`
+LIBS = `sdl-config --libs` `pkg-config --libs gtk+-2.0`
 
 # objects
 OBJS = core.o

@@ -27,6 +27,7 @@
 /*	the core routines for FakeX
 */
 
+#include <gtk/gtk.h>
 #include <string.h>
 #include <SDL.h>
 #include "windows.h"

@@ -242,10 +242,13 @@ int IDirectDrawSurface7::GetAttachedSurface(LPDDSCAPS2 lpDDSCaps, LPDIRECTDRAWSU
 
 /*	The IDirectDrawSurface7::Flip method makes the surface memory associated with the DDSCAPS_BACKBUFFER 
 	surface become associated with the front-buffer surface. */
-int Flip(LPDIRECTDRAWSURFACE7 lpDDSurfaceTargetOverride, DWORD dwFlags)
+int IDirectDrawSurface7::Flip(LPDIRECTDRAWSURFACE7 lpDDSurfaceTargetOverride, DWORD dwFlags)
 {
-	// temporary SDL surface...only to store the pointer
-	SDL_Surface *tmp;
+	// just swap the pointers....
+	SDL_Surface *temp = lpDDSurfaceTargetOverride->surface;
+	lpDDSurfaceTargetOverride->surface = surface;
+	surface = temp;
 	
-	// is 
+	/* IMPORTANT!! THIS CODE HAS NO EFFECT!!! THERE'S REALLY NO EFFECT! */
+	return DD_OK;
 };

@@ -42,6 +42,7 @@ class IDirectDrawSurface7 : public IUnknown
   		int Lock(LPRECT lpDestRect, LPDDSURFACEDESC2 lpDDSurfaceDesc, DWORD dwFlags, HANDLE hEvent);
   		int Unlock(LPRECT lpRect);
   		int GetAttachedSurface(LPDDSCAPS2 lpDDSCaps, LPDIRECTDRAWSURFACE7 FAR *lplpDDAttachedSurface);
+  		int Flip(LPDIRECTDRAWSURFACE7 lpDDSurfaceTargetOverride, DWORD dwFlags);
 		SDL_Surface	*surface;
 	private:
 		void createsurface(int width, int height);

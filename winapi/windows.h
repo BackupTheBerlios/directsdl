@@ -41,7 +41,15 @@ typedef Uint8 BYTE;
 typedef Uint16 WORD;
 typedef Uint32 DWORD;
 typedef unsigned long LONG;
+
+/* windows pointers */
 typedef void* LPVOID;
+typedef bool* LPBOOL;
+typedef BYTE* LPBYTE;
+typedef WORD* LPWORD;
+typedef DWORD* LPDWORD;
+typedef LONG* LPLONG;
+
 typedef int GUID;
 
 

@@ -34,6 +34,11 @@ sdl_cflags=`$sdl_config --cflags`
 sdl_libs=`$sdl_config --libs`
 sdl_static_libs=`$sdl_config --static-libs`
 
+gtk_config=`which pkg-config`
+gtk_cflags=`$gtk_config --cflags gtk+-2.0`
+gtk_libs=`$gtk_config --libs gtk+-2.0`
+gtk_static_libs=`$gtk_config --libs gtk+-2.0`
+
 usage="\
 Usage: $0 [--version] [--cflags] [--libs] [--static-libs]"
 
@@ -54,15 +59,15 @@ while test $# -gt 0; do
       echo "Very Early Development-version (pre-alpha 2) ;)"
       ;;
     --cflags)
-      echo $sdl_cflags -O3 -I${prefix}/include/DirectSDL/
+      echo $sdl_cflags $gtk_cflags -O3 -I${prefix}/include/DirectSDL/
       ;;
     --libs)
       libdirs="-L${exec_prefix}/lib -Wl,-rpath,${exec_prefix}/lib"
-      echo $sdl_libs $libdirs -lds_winapi -lds_dxcore -lds_ddraw 
+      echo $sdl_libs $gtk_libs $libdirs -lds_winapi -lds_dxcore -lds_ddraw 
       ;;
     --static-libs)
       libdirs="-L${exec_prefix}/lib -Wl,-static,-rpath,${exec_prefix}/lib"
-      echo $sdl_static_libs $libdirs -lds_winapi -lds_dxcore -lds_ddraw
+      echo $sdl_static_libs $gtk_static_libs $libdirs -lds_winapi -lds_dxcore -lds_ddraw
       ;;
     *)
       echo "${usage}" 1>&2

@@ -91,11 +91,6 @@ int EndPaint(PAINTSTRUCT* a, HWND b)
 {
 	return 0;
 };
-int MessageBox(int a, char *msg, char *msg2, int b)
-{
-	printf("%s\r\n%s\r\n",msg,msg2);
-	return 0;
-};
 int Sleep(long millis)
 {
 	SDL_Delay(millis);

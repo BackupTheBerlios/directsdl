@@ -39,3 +39,28 @@ void notimplemented (char* function)
     printf(function);
     printf("\" is not yet implemented!\n");
 }
+
+bool notimplementedBool (char* function,bool returnvar)
+{
+    printf("The function \"");
+    printf(function);
+    printf("\" is not yet implemented!\n");
+    return returnvar;
+}
+
+char notimplementedChar (char* function, char* returnvar)
+{
+    printf("The function \"");
+    printf(function);
+    printf("\" is not yet implemented!\n");
+    return *returnvar;
+}
+
+int notimplementedInt (char* function, int returnvar)
+{
+    printf("The function \"");
+    printf(function);
+    printf("\" is not yet implemented!\n");
+    return returnvar;
+}
+				    

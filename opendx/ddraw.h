@@ -14,7 +14,7 @@
 #define __DDRAW_INCLUDED__
 
 /*	Include some files wee need for compiling */
-#include "sdldx.h"
+#include "opendx.h"
 #include "windows.h"
 /*
 by Steini

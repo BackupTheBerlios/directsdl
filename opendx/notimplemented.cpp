@@ -1,6 +1,6 @@
 /*
-    SDLDX - A wrapper, which provides DirectX functionality on top of the SDL library
-    Copyright (C) 2004	Rene Rössler <rene@freshx.de>
+    opendx - A wrapper, which provides DirectX functionality on top of the SDL library
+    Copyright (C) 2004	Rene Roessler <rene@freshx.de>
 						
 						
     This library is free software; you can redistribute it and/or
@@ -18,8 +18,8 @@
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 
-    SDLDX is a wrapper, which provides DirectX functionality on top of the 
-    Simple Direct Media Layer (SDL) library. Using SDLDX enables you to easily 
+    opendx is a wrapper, which provides DirectX functionality on top of the 
+    Simple Direct Media Layer (SDL) library. Using opendx enables you to easily 
     port DirectX applications (for example games) to any platform supported 
     by the SDL library.
 	

@@ -1,3 +1,4 @@
 20040510 - Rene Roessler - 'Changelog startet'
 20040510 - Rene Roessler - 'renamed fake_x.h to sdldx.h'
 20040510 - Rene Roessler - 'Added the notimplemented function. You can now add notimplemented defines in "notimplemented.h".'
+20040510 - Rene Roessler - 'damn the name is opendx not sdldx ;)'

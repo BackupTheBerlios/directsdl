@@ -1,5 +1,5 @@
-# Makefile for sdldx
-# (C)2004 sdldx team
+# Makefile for opendx 
+# (C)2004 opendx team
 
 SHELL = /bin/bash
 
@@ -14,25 +14,25 @@ OBJS = notimplemented.o windows.o gtkfunctions.o iunknown.o idirectdraw.o idirec
 
 # the default :)
 default: $(OBJS)
-	$(CXX) $(OBJS) $(LIBS) -shared -fPIC -o libsdldx.so
+	$(CXX) $(OBJS) $(LIBS) -shared -fPIC -o libopendx.so
 
 install: default
-	cp libsdldx.so /usr/local/lib/
-	mkdir -p /usr/local/include/sdldx
-	cp *.h /usr/local/include/sdldx/
-	cp libsdldx-config /usr/local/bin/
+	cp libopendx.so /usr/local/lib/
+	mkdir -p /usr/local/include/opendx
+	cp *.h /usr/local/include/opendx/
+	cp libopendx-config /usr/local/bin/
 
 uninstall:
-	rm -rf /usr/local/lib/libsdldx.so /usr/local/include/sdldx /usr/local/bin/libsdldx-config
+	rm -rf /usr/local/lib/libopendx.so /usr/local/include/opendx /usr/local/bin/libopendx-config
 	
 clean:
-	rm *.o *.so *~ sdldx*.tar.bz2 -f
+	rm *.o *.so *~ opendx*.tar.bz2 -f
 	rm test/*.o test/*.so test/*~ test/msdn_test -f
 
 snapshot: clean
-	rm -rf sdldx
-	mkdir sdldxsnapshot
-	cp -r `/bin/ls|grep -v sdldxsnapshot` sdldxsnapshot/
-	mv sdldxsnapshot sdldx
-	tar cfS - -- sdldx | bzip2 --best > sdldx-`date "+%Y%m%d"`.tar.bz2
-	rm -r sdldx
+	rm -rf opendx
+	mkdir opendxsnapshot
+	cp -r `/bin/ls|grep -v opendxsnapshot` opendxsnapshot/
+	mv opendxsnapshot opendx
+	tar cfS - -- opendx | bzip2 --best > opendx-`date "+%Y%m%d"`.tar.bz2
+	rm -r opendx

@@ -1,5 +1,5 @@
-CXX = g++ `libsdldx-config --cflags`
-LIBS = `libsdldx-config --libs`
+CXX = g++ `libopendx-config --cflags`
+LIBS = `libopendx-config --libs`
 OBJS = msdn_test.o
 
 default: $(OBJS)

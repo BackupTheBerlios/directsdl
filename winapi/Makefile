@@ -16,7 +16,7 @@ default: $(OBJS)
 
 install: default
 	cp libds_winapi.so /usr/local/lib/
-	mkdir /usr/local/include/DirectSDL
+	mkdir -p /usr/local/include/DirectSDL
 	cp windows.h /usr/local/include/DirectSDL/
 	
 clean:

@@ -27,6 +27,7 @@
 /*	the core routines for FakeX
 */
 
+#include <string.h>
 #include <SDL.h>
 #include "windows.h"
 
@@ -49,9 +50,20 @@ int main(int argc, char *argv[])
 		return -1;
 	};
 	
+	/* create one large command-line string as the WinMain() want's it */
+	int arg_len = 0;
+	for(int i=1;i<argc;i++){
+		arg_len+=strlen(argv[i]);
+	};
+	char *command_line = new char[arg_len+1];
+	*command_line = '\0';
+	for(int i=1;i<argc;i++){
+		strcat(command_line,argv[i]);
+	};
+	
 	/* call our WinMain() */
 	screen = NULL;
-	WinMain(0,0,argv[1],0);
+	WinMain(0,0,command_line,0);
 	
 	/* quit SDL */
 	SDL_Quit();

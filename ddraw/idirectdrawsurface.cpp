@@ -60,7 +60,7 @@ IDirectDrawSurface7::IDirectDrawSurface7(LPDDSURFACEDESC2 lpDDSurfaceDesc2, DWOR
 		surface = screen;
 	} else {
 		// create a new surface...
-		createsurface(lpDDSurfaceDesc2->dwWith, lpDDSurfaceDesc2->dwHeight);
+		createsurface(lpDDSurfaceDesc2->dwWidth, lpDDSurfaceDesc2->dwHeight);
 	};
 			
 	this->locked_surface = NULL;

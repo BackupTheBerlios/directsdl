@@ -30,7 +30,7 @@
 class IDirectDrawSurface7 : public IUnknown
 {
 	public:
-		IDirectDrawSurface7(LPDDSURFACEDESC2 lpDDSurfaceDesc2);
+		IDirectDrawSurface7(LPDDSURFACEDESC2 lpDDSurfaceDesc2, DWORD dwCaps);
 		int Release(void);
 		int IsLost(void);
 		int Restore(void);

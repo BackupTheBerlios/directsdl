@@ -82,7 +82,7 @@ int IDirectDraw7::CreateSurface(LPDDSURFACEDESC2 lpDDSurfaceDesc2,
 	if(pUnkOuter) return DD_FALSE;
 
 	/* create object */
-	surface = new IDirectDrawSurface7(lpDDSurfaceDesc2);
+	surface = new IDirectDrawSurface7(lpDDSurfaceDesc2, lpDDSurfaceDesc2->ddsCaps.dwCaps);
 	
 	/* write pointer back */
 	*lplpDDSurface = surface;	

@@ -29,7 +29,7 @@
 #include "ddraw.h"
 
 /*	create a IDirectDrawSurface7 */
-IDirectDrawSurface7::IDirectDrawSurface7(LPDDSURFACEDESC2 lpDDSurfaceDesc2)
+IDirectDrawSurface7::IDirectDrawSurface7(LPDDSURFACEDESC2 lpDDSurfaceDesc2, DWORD dwCaps)
 {
 	Uint32 rmask,gmask,bmask,amask;
 	/* SDL interprets each pixel as a 32-bit number, so our masks must depend
@@ -45,7 +45,13 @@ IDirectDrawSurface7::IDirectDrawSurface7(LPDDSURFACEDESC2 lpDDSurfaceDesc2)
     	bmask = 0x00ff0000;
     	amask = 0xff000000;
 	#endif
-    			
+    
+	/* if the user requested a primary surface we don't need to create one, we just point to the screen */
+	if(dwCaps & DDSCAPS_PRIMARYSURFACE){
+		// point to the screen...
+		surface = screen;
+	};
+		
 	surface = SDL_CreateRGBSurface(SDL_SWSURFACE, lpDDSurfaceDesc2->dwWidth, lpDDSurfaceDesc2->dwHeight, 
 				32, rmask, gmask, bmask, amask);
 	
@@ -56,7 +62,9 @@ IDirectDrawSurface7::IDirectDrawSurface7(LPDDSURFACEDESC2 lpDDSurfaceDesc2)
 */
 int IDirectDrawSurface7::Release(void)
 {
-	SDL_FreeSurface(surface);
+	// check if our surface was the "primary surface"
+	// because screen can't be freed!
+	if(surface!=screen)	SDL_FreeSurface(surface);
 	return DD_OK;
 };
 

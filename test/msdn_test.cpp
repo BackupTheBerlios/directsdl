@@ -12,11 +12,12 @@
 */
 #include"ddraw.h"
 BOOL WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
-{
-        MessageBox(0,"Yes, you can see a messagebox :)", "test", 1);
-	
+{	
 	HRESULT ddrval;
 	LPDIRECTDRAW lpDD;
+
+	// test our new MessageBox...thanks Rene ;)	
+	MessageBox(0, "A DirectX tutorial from the MSDN","OpenDX",0);
 	
 	ddrval = DirectDrawCreateEx(NULL, &lpDD, IID_IDirectDraw7, NULL); 
 	if(ddrval == DD_OK) 

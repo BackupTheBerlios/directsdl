@@ -27,6 +27,7 @@
 /* IDirect3D8 class implementation
 */
 
+#include <SDL.h>
 #include "d3d8.h"
 
 // std c'tor d'tor
@@ -47,5 +48,27 @@ bool IDirect3D8::CheckDeviceType(UINT Adapter, D3DDEVTYPE CheckType, D3DFORMAT D
 
 bool IDirect3D8::CreateDevice(UINT Adapter,D3DDEVTYPE DeviceType,HWND hFocusWindow,DWORD BehaviorFlags,D3DPRESENT_PARAMETERS* pPresentationParameters,IDirect3DDevice8** ppReturnedDeviceInterface)
 {
+	int flags = SDL_OPENGL;
+	int depth;
+	
+	// check if fullscreen is wanted
+	if(!pPresentationParameters->Windowed) flags|=SDL_FULLSCREEN;
+	
+	// choose video pixel depth
+	// there are much more video formats to do....
+	// we just enable 16bit because it's the best for OpenGL in Linux :)
+	switch(pPresentationParameters->BackBufferFormat){
+		case D3DFMT_R5G6B5: depth = 16; break;
+		default: depth = 16; break;
+	};
+	
+	// set videomode using SDL :)
+	SDL_SetVideoMode(	pPresentationParameters->BackBufferWidth,
+				pPresentationParameters->BackBufferHeight,
+				depth,flags);
+	
+	// create a new DeviceInterface
+	*ppReturnedDeviceInterface = new IDirect3DDevice8;
+	
 	return true;
 };

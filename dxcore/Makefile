@@ -16,6 +16,7 @@ default: $(OBJS)
 
 install: default
 	cp libds_dxcore.so /usr/local/lib/
+	cp libds-config /usr/local/bin/
 	
 clean:
 	rm *.o -f

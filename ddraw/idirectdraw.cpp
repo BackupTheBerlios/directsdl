@@ -119,3 +119,40 @@ int IDirectDraw7::GetDisplayMode(LPDDSURFACEDESC2 lpDDSurfaceDesc2)
 	lpDDSurfaceDesc2->dwHeight = screen->h;
 	return DD_OK;
 };
+
+/* The IDirectDraw7::GetScanLine method retrieves the scan line that is currently being drawn on the monitor. */
+/*	I really don't know why this function is important...we return a nice number and say...all ok... */
+int IDirectDraw7::GetScanLine(LPDWORD lpdwScanLine)
+{
+	// return some number...
+	*lpdwScanLine = 234;
+	// quit
+	return DD_OK;
+};
+
+/* 	The IDirectDraw7::GetVerticalBlankStatus method retrieves the status of the vertical blank.
+	Another method...really important! */
+int IDirectDraw7::GetVerticalBlankStatus(LPBOOL lpbIsInVB)
+{
+	*lpbIsInVB = true;
+	return DD_OK;
+};
+
+/* 	The IDirectDraw7::GetMonitorFrequency method retrieves the frequency of the monitor being driven 
+	by the DirectDraw object. */
+int IDirectDraw7::GetMonitorFrequency(LPDWORD lpdwFrequency)
+{
+	// fake a good monitor *g
+	*lpdwFrequency = 85;
+	return DD_OK;
+};
+
+/* 	The IDirectDraw7::WaitForVerticalBlank method helps the application synchronize itself with
+	the vertical-blank interval. */
+int IDirectDraw7::WaitForVerticalBlank(DWORD dwFlags, HANDLE hEvent)  
+{
+	// another useful function...perhaps working code will
+	// be written later...
+	return DD_OK;
+};
+

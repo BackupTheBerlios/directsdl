@@ -40,4 +40,8 @@ class IDirectDraw7 : public IUnknown
   		int SetDisplayMode(DWORD dwWidth, DWORD dwHeight, DWORD dwBPP);
   		int GetCaps(LPDDCAPS lpDDDriverCaps, LPDDCAPS lpDDHELCaps);
   		int GetDisplayMode(LPDDSURFACEDESC2 lpDDSurfaceDesc2);
+  		int GetVerticalBlankStatus(LPBOOL lpbIsInVB);
+  		int GetScanLine(LPDWORD lpdwScanLine);
+  		int GetMonitorFrequency(LPDWORD lpdwFrequency);
+  		int WaitForVerticalBlank(DWORD dwFlags, HANDLE hEvent);
 };

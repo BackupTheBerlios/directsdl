@@ -63,6 +63,7 @@ IDirectDrawSurface7::IDirectDrawSurface7(LPDDSURFACEDESC2 lpDDSurfaceDesc2, DWOR
 		createsurface(lpDDSurfaceDesc2->dwWidth, lpDDSurfaceDesc2->dwHeight);
 	};
 			
+	this->dwCaps = dwCaps;
 	this->locked_surface = NULL;
 };
 
@@ -76,6 +77,7 @@ IDirectDrawSurface7::~IDirectDrawSurface7(void)
 IDirectDrawSurface7::IDirectDrawSurface7(int width, int height)
 {
 	createsurface(width,height);
+	this->dwCaps = 0;
 	this->locked_surface = NULL;	
 };
 
@@ -242,13 +244,19 @@ int IDirectDrawSurface7::GetAttachedSurface(LPDDSCAPS2 lpDDSCaps, LPDIRECTDRAWSU
 
 /*	The IDirectDrawSurface7::Flip method makes the surface memory associated with the DDSCAPS_BACKBUFFER 
 	surface become associated with the front-buffer surface. */
+/*	ATTENTION: There's no real surface flip. I just blit one of the two surfaces to the screen. 
+	Maybe some games will find that confusing */
 int IDirectDrawSurface7::Flip(LPDIRECTDRAWSURFACE7 lpDDSurfaceTargetOverride, DWORD dwFlags)
 {
-	// just swap the pointers....
-	SDL_Surface *temp = lpDDSurfaceTargetOverride->surface;
-	lpDDSurfaceTargetOverride->surface = surface;
-	surface = temp;
+	// check whick surface is the primary surface
+	if(lpDDSurfaceTargetOverride->dwCaps & DDSCAPS_PRIMARYSURFACE){
+		// blit everything into the screen
+		SDL_BlitSurface(surface,NULL,screen,NULL);
+	}else{
+		// blit everything into the screen
+		SDL_BlitSurface(lpDDSurfaceTargetOverride->surface,NULL,screen,NULL);
+	};
+	SDL_Flip(screen);
 	
-	/* IMPORTANT!! THIS CODE HAS NO EFFECT!!! THERE'S REALLY NO EFFECT! */
 	return DD_OK;
 };

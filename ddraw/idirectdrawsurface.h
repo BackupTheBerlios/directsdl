@@ -47,4 +47,5 @@ class IDirectDrawSurface7 : public IUnknown
 	private:
 		void createsurface(int width, int height);
 		SDL_Surface *locked_surface;
+		DWORD dwCaps, dwFlags;
 };

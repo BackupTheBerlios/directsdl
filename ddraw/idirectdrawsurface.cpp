@@ -50,6 +50,7 @@ IDirectDrawSurface7::IDirectDrawSurface7(LPDDSURFACEDESC2 lpDDSurfaceDesc2, DWOR
 	if(dwCaps & DDSCAPS_PRIMARYSURFACE){
 		// point to the screen...
 		surface = screen;
+		return;
 	};
 		
 	surface = SDL_CreateRGBSurface(SDL_SWSURFACE, lpDDSurfaceDesc2->dwWidth, lpDDSurfaceDesc2->dwHeight, 
@@ -64,7 +65,7 @@ int IDirectDrawSurface7::Release(void)
 {
 	// check if our surface was the "primary surface"
 	// because screen can't be freed!
-	if(surface!=screen)	SDL_FreeSurface(surface);
+	if(surface!=screen) SDL_FreeSurface(surface);
 	return DD_OK;
 };
 

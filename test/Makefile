@@ -1,5 +1,5 @@
-CXX = g++ `sdl-config --cflags` -O3 -I/usr/local/include/DirectSDL/
-LIBS = `sdl-config --libs` -lds_winapi -lds_dxcore -lds_ddraw
+CXX = g++ `libds-config --cflags`
+LIBS = `libds-config --libs`
 OBJS = msdn_test.o
 
 default: $(OBJS)
